@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Checklist Mercado ToDay</title>
 
 <style>
@@ -36,8 +38,6 @@ h1{
   transition:0.25s;
   border:1px solid rgba(255,255,255,0.03);
 }
-
-/* HOVER */
 
 .item:hover{
   transform:translateY(-2px);
@@ -105,10 +105,62 @@ h1{
   padding-top:20px;
 }
 
+/* TELA FINAL */
+
+#success-message{
+  display:none;
+  height:80vh;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.success-box{
+  background:#1e293b;
+  padding:35px;
+  border-radius:20px;
+  border:1px solid rgba(34,197,94,0.4);
+  box-shadow:
+    0 0 30px rgba(34,197,94,0.18);
+  animation:fadeIn 0.4s ease;
+}
+
+.success-box h1{
+  color:#4ade80;
+  margin-bottom:15px;
+}
+
+.success-box p{
+  font-size:18px;
+  line-height:1.5;
+}
+
+.emoji{
+  margin-top:20px;
+  font-size:32px;
+}
+
+/* ANIMAÇÃO */
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:scale(0.95);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
 </style>
 </head>
 
 <body>
+
+<!-- CHECKLIST -->
+
+<div id="checklist-container">
 
 <h1>🛒 Checklist Mercado ToDay</h1>
 
@@ -127,9 +179,13 @@ h1{
 
 <div class="item">
 <input type="checkbox" onchange="toggle(this)">
-<span>🥚 - Ovos (24UN)</span>
+<span>🥚 - Ovos (12UN)</span>
 </div>
 
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍪 - Trakinas Chocolate (2UN)</span>
+</div>
 
 <div class="item">
 <input type="checkbox" onchange="toggle(this)">
@@ -153,7 +209,7 @@ h1{
 
 <div class="item">
 <input type="checkbox" onchange="toggle(this)">
-<span> 🥬 - Alface (1UN)</span>
+<span>🍬 - Caixa de Chocolate Lacta (1UN)</span>
 </div>
 
 <div class="item">
@@ -163,36 +219,18 @@ h1{
 
 <div class="item">
 <input type="checkbox" onchange="toggle(this)">
-<span>🥛 - Leite Semi Hércules (2L)</span>
+<span>🥛 - Leite Semi Hércules (1L)</span>
 </div>
 
 <div class="item">
 <input type="checkbox" onchange="toggle(this)">
-<span>Alho -  (3UN)</span>
+<span>🍅 - Tomates (3UN)</span>
 </div>
 
 <div class="item">
 <input type="checkbox" onchange="toggle(this)">
 <span>🍞 - Pão Integral Frutas Nutrella (1UN)</span>
 </div>
-
-<div class="item">
-<input type="checkbox" onchange="toggle(this)">
-<span> 🍗-Coxinha da Asa (1KG UN)</span>
-</div>
-
-<div class="item">
-<input type="checkbox" onchange="toggle(this)">
-<span> 🍗- Peito de frango(1k 0UN)</span>
-</div>
-
-<div class="item">
-<input type="checkbox" onchange="toggle(this)">
-<span> 🌾 - Arroz Integral(2UN)</span>
-</div>
-
-
-
 
 <div class="divider">────────────</div>
 
@@ -218,10 +256,53 @@ h1{
 © 2026 Billy Corp. All rights reserved.
 </div>
 
+</div>
+
+<!-- TELA FINAL -->
+
+<div id="success-message">
+
+<div class="success-box">
+
+<h1>🎉 Parabéns!</h1>
+
+<p>
+Você completou a lista do Billy com sucesso 😄👏
+</p>
+
+<div class="emoji">
+✅🛒✨
+</div>
+
+</div>
+
+</div>
+
 <script>
 
 function toggle(el){
+
   el.parentElement.classList.toggle('checked');
+
+  checkAllCompleted();
+}
+
+function checkAllCompleted(){
+
+  const checkboxes =
+    document.querySelectorAll('.item input[type="checkbox"]');
+
+  const allChecked =
+    [...checkboxes].every(cb => cb.checked);
+
+  if(allChecked){
+
+    document.getElementById('checklist-container')
+      .style.display='none';
+
+    document.getElementById('success-message')
+      .style.display='flex';
+  }
 }
 
 </script>

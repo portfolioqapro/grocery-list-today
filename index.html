@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,213 +10,529 @@
 
 <style>
 
-body{
-  font-family:Arial,sans-serif;
-  background:#0f172a;
-  color:white;
-  padding:20px;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* TÍTULO */
+body{
+    font-family:Arial,sans-serif;
+    background:#0f172a;
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    padding:20px;
+}
 
 h1{
-  text-align:center;
+    text-align:center;
+    margin-bottom:10px;
+    font-size:30px;
 }
 
-/* ITENS */
+.subtitle{
+    text-align:center;
+    opacity:.7;
+    margin-bottom:20px;
+}
+
+.category{
+    margin-top:25px;
+}
+
+.category h2{
+    font-size:20px;
+    margin-bottom:12px;
+    color:#60a5fa;
+    border-left:5px solid #3b82f6;
+    padding-left:10px;
+}
 
 .item{
-  background:#1e293b;
-  padding:14px;
-  margin:10px 0;
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  transition:0.25s;
-  border:1px solid rgba(255,255,255,0.03);
+    background:#1e293b;
+    padding:14px;
+    margin:8px 0;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition:.25s;
+    border:1px solid rgba(255,255,255,.04);
 }
 
 .item:hover{
-  transform:translateY(-2px);
+    transform:translateY(-2px);
 }
-
-/* CHECKBOX */
 
 .item input[type="checkbox"]{
-  width:18px;
-  height:18px;
-  cursor:pointer;
+    width:20px;
+    height:20px;
+    cursor:pointer;
 }
 
-/* ITEM CONCLUÍDO */
+.item span{
+    font-size:16px;
+}
 
 .checked{
-  background:rgba(34,197,94,0.18);
-  border:1px solid rgba(34,197,94,0.45);
-  box-shadow:
-    0 0 20px rgba(34,197,94,0.18),
-    inset 0 0 10px rgba(34,197,94,0.08);
+    background:rgba(34,197,94,.18);
+    border:1px solid rgba(34,197,94,.45);
+    box-shadow:
+        0 0 20px rgba(34,197,94,.18),
+        inset 0 0 10px rgba(34,197,94,.08);
 }
-
-/* TEXTO CONCLUÍDO */
 
 .checked span{
-  text-decoration:line-through;
-  color:#86efac;
+    text-decoration:line-through;
+    color:#86efac;
 }
-
-/* CHECKBOX VERDE */
 
 .checked input[type="checkbox"]{
-  accent-color:#22c55e;
+    accent-color:#22c55e;
 }
-
-/* DIVISOR */
 
 .divider{
-  margin:20px 0;
-  text-align:center;
-  opacity:0.4;
-  letter-spacing:2px;
+    margin:22px 0;
+    text-align:center;
+    opacity:.4;
 }
-
-/* INFO */
 
 .info{
-  background:#1e293b;
-  padding:14px;
-  border-radius:14px;
-  margin:10px 0;
-  font-size:14px;
-  line-height:1.5;
-  border:1px solid rgba(255,255,255,0.03);
+    background:#1e293b;
+    padding:16px;
+    border-radius:14px;
+    margin:12px 0;
+    line-height:1.6;
+    border:1px solid rgba(255,255,255,.04);
 }
-
-/* FOOTER */
 
 .footer{
-  margin-top:auto;
-  text-align:center;
-  font-size:12px;
-  opacity:0.6;
-  padding-top:20px;
+    margin-top:auto;
+    text-align:center;
+    opacity:.6;
+    font-size:12px;
+    padding-top:25px;
 }
 
-/* TELA FINAL */
-
 #success-message{
-  display:none;
-  height:80vh;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    height:90vh;
+    text-align:center;
 }
 
 .success-box{
-  background:#1e293b;
-  padding:35px;
-  border-radius:20px;
-  border:1px solid rgba(34,197,94,0.4);
-  box-shadow:
-    0 0 30px rgba(34,197,94,0.18);
-  animation:fadeIn 0.4s ease;
+    background:#1e293b;
+    padding:40px;
+    border-radius:20px;
+    border:1px solid rgba(34,197,94,.4);
+    box-shadow:0 0 35px rgba(34,197,94,.2);
 }
 
 .success-box h1{
-  color:#4ade80;
-  margin-bottom:15px;
+    color:#4ade80;
+    margin-bottom:20px;
 }
 
 .success-box p{
-  font-size:18px;
-  line-height:1.5;
+    font-size:18px;
+    line-height:1.7;
 }
 
-.emoji{
-  margin-top:20px;
-  font-size:32px;
+.success-box .emoji{
+    font-size:38px;
+    margin-top:20px;
 }
-
-/* ANIMAÇÃO */
 
 @keyframes fadeIn{
-  from{
-    opacity:0;
-    transform:scale(0.95);
-  }
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
+
+from{
+opacity:0;
+transform:scale(.95);
+}
+
+to{
+opacity:1;
+transform:scale(1);
+}
+
+}
+
+.success-box{
+animation:fadeIn .4s ease;
 }
 
 </style>
+
 </head>
 
 <body>
-
-<!-- CHECKLIST -->
 
 <div id="checklist-container">
 
 <h1>🛒 Checklist Mercado ToDay</h1>
 
-<div class="divider">────────────</div>
-
-
-<div class="item">
-<input type="checkbox" onchange="toggle(this)">
-<span>🥖 - Pães de Sal (10UN)</span>
+<div class="subtitle">
+Lista Inteligente • Billy
 </div>
 
-
-<div class="item">
-<input type="checkbox" onchange="toggle(this)">
-<span>🧀 - Mussarela (300g)</span>
+<div class="divider">
+────────────────────────
 </div>
-
-<div class="item">
-<input type="checkbox" onchange="toggle(this)">
-<span>🥚 - Ovos Brancos (12UN)</span>
-</div>
-
-<div class="item">
-<input type="checkbox" onchange="toggle(this)">
-<span>🍌 - Banana Nanica (800g)</span>
-</div>
-
-<div class="divider">────────────</div>
 
 <div class="info">
-  
-📌 Obs: Favor somar os itens e enviar o valor pelo WhatsApp
+
+⚠️ <b>Importante:</b><br><br>
+
+Enviar apenas os produtos constantes nesta lista.
+
+Caso algum item esteja indisponível, não substituir por outro sem autorização.
+
+Obrigado! 😄
+
 </div>
 
-<div class="divider">────────────</div>
+<div class="divider">
+────────────────────────
+</div>
+
+<!-- ========= PADARIA ========= -->
+
+<div class="category">
+
+<h2>🥖 Padaria</h2>
+
+<div class="category">
+
+<h2>🥖 Padaria</h2>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🥖 Pães de Sal (10 unidades)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍞 Pão Integral (2 unidades)</span>
+</div>
+
+</div>
+
+<!-- ========= CARNES E PROTEÍNAS ========= -->
+
+<div class="category">
+
+<h2>🥩 Carnes e Proteínas</h2>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🥫 Sardinha Pescador (3 latas)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍗 Coxinha da Asa (2kg)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍗 Peito de Frango (1kg)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍗 Moela de Frango (500g)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🥩 Fígado Bovino (500g)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍗 Fígado de Galinha (500g)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🥚 Ovos (40 unidades)</span>
+</div>
+
+</div>
+
+<!-- ========= LATICÍNIOS ========= -->
+
+<div class="category">
+
+<h2>🥛 Laticínios</h2>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🧀 Mussarela (500g)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🥛 Iogurte Natural (3 unidades)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🥫 Leite Condensado (395g)</span>
+</div>
+
+</div>
+
+<!-- ========= MERCEARIA ========= -->
+
+<div class="category">
+
+<h2>🍚 Mercearia</h2>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍚 Arroz Integral (2kg)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍚 Arroz Branco P. Fino (2kg)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍯 Açúcar Mascavo (2kg)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🥣 Nescau (350g)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🫒 Azeite Extra Virgem Gallo (500ml)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍎 Vinagre de Maçã (1 unidade)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>⚫ Cominho Negro (1 unidade)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🟡 Cúrcuma (100g)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🌰 Pistache (300g)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🥜 Nutella Avelã (140g)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🌾 Linhaça Moída (1 unidade)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🧂 Sal Rosa (1kg)</span>
+</div>
+
+</div>
+
+<!-- ========= HORTIFRUTI ========= -->
+
+<div class="category">
+
+<h2>🥬 Hortifruti</h2>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🥑 Abacate (3 unidades)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍌 Banana (3kg)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍎 Maçã (1kg)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍊 Laranja (12 unidades)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍅 Tomate (5 unidades)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🥕 Cenoura (300g)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🫜 Beterraba (1kg)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🥒 Pepino (2 unidades)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🥒 Abobrinha (1 unidade)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🥬 Alface (2 pés)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🌿 Cheiro Verde (1 maço)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍠 Batata Doce (2kg)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🧅 Cebola Nacional (2 unidades)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🧅 Cebola Roxa (2 unidades)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🧄 Alho (300g)</span>
+</div>
+
+</div>
+
+<!-- ========= CHÁS ========= -->
+
+<div class="category">
+
+<h2>🍵 Chás</h2>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🍵 Chá de Açafrão</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🌿 Chá de Cavalinha</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🌱 Chá de Dente-de-Leão</span>
+</div>
+
+</div>
+
+<!-- ========= HIGIENE ========= -->
+
+<div class="category">
+
+<h2>🧴 Higiene</h2>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🧴 Shampoo (1 unidade)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🧼 Sabonete (2 unidades)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🪥 Creme Dental Colgate (1 unidade)</span>
+</div>
+
+<div class="item">
+<input type="checkbox" onchange="toggle(this)">
+<span>🧴 Aerosol (150ml)</span>
+</div>
+
+</div>
+
+<div class="divider">
+────────────────────────
+</div>
 
 <div class="info">
-📍 Endereço: Rua Antônio Félix Neto (2297) - Mineiros do Tietê - Chamar no portão (Billy)
+📌 <b>Observação:</b><br><br>
+Favor somar todos os itens disponíveis e enviar o valor total pelo WhatsApp.
 </div>
 
-<div class="divider">────────────</div>
+<div class="divider">
+────────────────────────
+</div>
 
 <div class="info">
-💳 Método/Pag: pagamento em domicílio via Alelo Voucher (VR)
+📍 <b>Entrega:</b><br><br>
+Rua Antônio Félix Neto, 2297<br>
+Mineiros do Tietê - SP<br><br>
+
+🚪 Chamar no portão (Billy)
 </div>
 
-<div class="divider">────────────</div>
+<div class="divider">
+────────────────────────
+</div>
+
+<div class="info">
+💳 <b>Pagamento:</b><br><br>
+
+Alelo Voucher (VR)<br>
+Pagamento realizado no momento da entrega.
+</div>
+
+<div class="divider">
+────────────────────────
+</div>
 
 <div class="footer">
-© 2026 Billy Corp. All rights reserved.
+©️ 2026 Billy Corp. All rights reserved.
 </div>
 
 </div>
 
-<!-- TELA FINAL -->
+<!-- ==================== TELA FINAL ==================== -->
 
 <div id="success-message">
 
@@ -224,11 +541,23 @@ h1{
 <h1>🎉 Parabéns!</h1>
 
 <p>
-Você completou a lista do Billy com sucesso 😄👏
+
+Você concluiu toda a lista de compras do Billy com sucesso!
+
+<br><br>
+
+🏆 Todos os produtos foram conferidos.
+
+<br><br>
+
+Muito obrigado pelo excelente trabalho! 😄👏
+
 </p>
 
 <div class="emoji">
-✅🛒✨
+
+✅🛒✨🥳
+
 </div>
 
 </div>
@@ -239,30 +568,32 @@ Você completou a lista do Billy com sucesso 😄👏
 
 function toggle(el){
 
-  el.parentElement.classList.toggle('checked');
+    el.parentElement.classList.toggle("checked");
 
-  checkAllCompleted();
+    checkAllCompleted();
+
 }
 
 function checkAllCompleted(){
 
-  const checkboxes =
-    document.querySelectorAll('.item input[type="checkbox"]');
+    const checkboxes =
+    document.querySelectorAll(".item input[type='checkbox']");
 
-  const allChecked =
+    const allChecked =
     [...checkboxes].every(cb => cb.checked);
 
-  if(allChecked){
+    if(allChecked){
 
-    document.getElementById('checklist-container')
-      .style.display='none';
+        document.getElementById("checklist-container").style.display="none";
 
-    document.getElementById('success-message')
-      .style.display='flex';
-  }
+        document.getElementById("success-message").style.display="flex";
+
+    }
+
 }
 
 </script>
 
 </body>
+
 </html>
